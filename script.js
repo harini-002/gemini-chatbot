@@ -1,8 +1,3 @@
-const API_KEY = "AQ.Ab8RN6JAOzJs-yy1GYLSBuwd0Ca9vcFbgu-3bQuPl-DGxqyK7A";
-const MODEL = "gemini-3.6-flash";
-const API_URL =
-    `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
-
 const chatContainer = document.getElementById("chatContainer");
 const messageInput = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
@@ -40,21 +35,21 @@ async function sendMessage() {
 
     try {
 
-        const response = await fetch(API_URL, {
+const response = await fetch("/.netlify/functions/chat", {
 
-            method: "POST",
+    method: "POST",
 
-            headers: {
-                "Content-Type": "application/json"
-            },
+    headers: {
+        "Content-Type": "application/json"
+    },
 
-            body: JSON.stringify({
+    body: JSON.stringify({
 
-                contents: conversationHistory
+        contents: conversationHistory
 
-            })
+    })
 
-        });
+});
 
 
         // Check HTTP status
